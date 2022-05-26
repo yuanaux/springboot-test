@@ -41,16 +41,22 @@ public class PrintLogAspect {
         PrintLog printLog = signature.getMethod().getAnnotation(PrintLog.class);
         String desc = printLog.info();
 
-        log.info("Method info: {}.{} {}, params: {}", targetClassName, methodName, desc, JSONObject.toJSONString(getFieldsName(joinPoint)));
+        log.info("===> {}.{}() {}, params: {}", targetClassName, methodName, desc, JSONObject.toJSONString(getFieldsName(joinPoint)));
     }
 
     @Around("printLog()")
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        MethodSignature signature = (MethodSignature) proceedingJoinPoint.getSignature();
+        String targetClassName = signature.getDeclaringType().getSimpleName();
+        String methodName = signature.getName();
+
+        PrintLog printLog = signature.getMethod().getAnnotation(PrintLog.class);
+        String desc = printLog.info();
+
         long startTime = System.currentTimeMillis();
 
         Object result = proceedingJoinPoint.proceed();
-
-        log.info("Method result: {}, cost: {}ms", JSONObject.toJSONString(result), System.currentTimeMillis() - startTime);
+        log.info("===> {}.{}() {}, result: {}, cost: {}ms", targetClassName, methodName, desc, JSONObject.toJSONString(result), System.currentTimeMillis() - startTime);
         return result;
     }
 
