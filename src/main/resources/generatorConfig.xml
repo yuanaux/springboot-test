@@ -9,6 +9,10 @@
                     MyBatis3: 生成带条件的CRUD（奢华尊享版）
      -->
     <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
         <!-- 数据库的连接信息 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://192.168.3.242:3306/qidai?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=Asia/Shanghai"
@@ -31,7 +35,7 @@
         <!-- 逆向分析的表 -->
         <!-- tableName设置为*号，可以对应所有表，此时不写domainObjectName -->
         <!-- domainObjectName属性指定生成出来的实体类的类名 -->
-        <table tableName="interface_log" domainObjectName="InterfaceLog"/>
-        <table tableName="interface_config" domainObjectName="InterfaceConfig"/>
+        <table tableName="channel" domainObjectName="Channel"/>
+        <table tableName="channel_cost" domainObjectName="ChannelCost"/>
     </context>
 </generatorConfiguration>
