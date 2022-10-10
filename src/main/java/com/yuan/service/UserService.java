@@ -1,6 +1,6 @@
 package com.yuan.service;
 
-import com.yuan.bean.User;
+import com.yuan.model.User;
 import com.yuan.dao.UserDao;
 import com.yuan.utils.PrintLog;
 import lombok.extern.slf4j.Slf4j;

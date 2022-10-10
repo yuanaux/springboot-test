@@ -1,6 +1,6 @@
 package com.yuan.dao;
 
-import com.yuan.bean.User;
+import com.yuan.model.User;
 import com.yuan.utils.PrintLog;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

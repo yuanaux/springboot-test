@@ -1,4 +1,4 @@
-package com.yuan.bean;
+package com.yuan.model;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;

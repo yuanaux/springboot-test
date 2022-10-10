@@ -1,6 +1,6 @@
 package com.yuan.controller;
 
-import com.yuan.bean.User;
+import com.yuan.model.User;
 import com.yuan.service.UserService;
 import com.yuan.utils.PrintLog;
 import org.springframework.beans.factory.annotation.Autowired;
