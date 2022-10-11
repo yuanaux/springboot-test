@@ -3,39 +3,37 @@ package com.yuan.controller;
 import com.yuan.model.User;
 import com.yuan.service.UserService;
 import com.yuan.utils.PrintLog;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController(value = "/user")
+import javax.annotation.Resource;
+
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    User user;
-
-    @Autowired
+    @Resource
     UserService userService;
 
     @PrintLog
-    @GetMapping
-    public String getUser(@RequestParam(value = "name", required = false, defaultValue = "先生") String name, @RequestParam(value = "age", required = false, defaultValue = "18") Integer age) throws InterruptedException {
-        user.setName(name);
-        user.setAge(age);
-        userService.saveUser(user);
-        return "GET-User：" + user;
+    @GetMapping("/get")
+    public String get(User user) throws InterruptedException {
+        return "GET-User：" + userService.getUser(user);
     }
 
-    @PostMapping
-    public String saveUser() {
+    @PrintLog
+    @PostMapping("/add")
+    public String add(@RequestBody User user) {
+        System.out.println(user);
         return "POST-User";
     }
 
-    @PutMapping
-    public String updateUser() {
+    @PutMapping("/update")
+    public String update() {
         return "PUT-User";
     }
 
-    @DeleteMapping
-    public String deleteUser() {
+    @DeleteMapping("/delete")
+    public String delete(@RequestParam(value = "id", required = true) Integer id) {
         return "DELETE-User";
     }
 }

@@ -1,0 +1,7 @@
+spring:
+  aop:
+    auto: true
+server:
+  port: 8888
+  servlet:
+    context-path: /yuan
