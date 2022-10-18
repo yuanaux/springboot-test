@@ -5,3 +5,8 @@ server:
   port: 8888
   servlet:
     context-path: /yuan
+yuan:
+  pool:
+    max-connect-per-route: 10
+    max-total-connect: 100
+    retry-times: 2
