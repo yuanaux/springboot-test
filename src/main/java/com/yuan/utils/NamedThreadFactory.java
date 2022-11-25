@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author: yuanxiaolong
  * @Title: NamedThreadFactory
- * @ProjectName: product_two
+ * @ProjectName: springboot-test
  * @Description: 自定义线程池中执行线程的统一名称
  * @date: 2022/11/8 14:14
  */
