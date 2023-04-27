@@ -83,6 +83,11 @@
             <version>5.8.11</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
