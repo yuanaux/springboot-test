@@ -4,6 +4,7 @@ import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author: yuanxiaolong
@@ -36,6 +37,21 @@ public class CustomProducer {
                 }
             }
         });// 发送数据
+        kafkaProducer.close();// 关闭资源
+    }
+
+    /**
+     * 同步发送消息
+     *
+     * @date 2023/5/4 15:02
+     * @author yuanxiaolong
+     */
+    public void testSync() throws ExecutionException, InterruptedException {
+        Properties properties = new Properties();// 属性配置
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "hadoop102:9092,hadoop103:9092");
+        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(properties);// 创建生产者
+        kafkaProducer.send(new ProducerRecord<>("first", "Hello Kafka")).get();// 同步发送数据
         kafkaProducer.close();// 关闭资源
     }
 
